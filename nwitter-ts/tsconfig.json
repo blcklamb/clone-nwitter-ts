@@ -8,6 +8,8 @@
     ],
     "rootDir": "src",
     "outDir": "build",
+    "typeRoots": ["./node_modules/@types", "types"],
+    "baseUrl": "src",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
