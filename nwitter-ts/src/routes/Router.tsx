@@ -20,7 +20,7 @@ export default function AppRouter({
         <Routes>
           {isLoggedIn ? (
             <>
-              <p>Hi you are logged in</p>
+              <Route path="/" element={<Auth />} />
             </>
           ) : (
             <Route path="/" element={<Auth />} />
