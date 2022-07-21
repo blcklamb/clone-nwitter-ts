@@ -1,5 +1,6 @@
-import { authService, firebaseInstance } from './fbase';
-import AuthForm from './AuthForm';
+import { authService, firebaseInstance } from './fbase'
+
+import AuthForm from './AuthForm'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faTwitter,
@@ -17,10 +18,13 @@ function Auth() {
     let provider
     if (name === 'google') {
       provider = new firebaseInstance.auth.GoogleAuthProvider()
-    } else if (name === 'github') {
-      provider = new firebaseInstance.auth.GithubProvider()
     }
-    const data = await authService.signInWithPopup(provider)
+    // else if (name === 'github') {
+    //   provider = new firebaseInstance.auth.GithubProvider()
+    // }
+    if (provider) {
+      const data = await authService.signInWithPopup(provider)
+    }
   }
   return (
     <AuthContainer>
