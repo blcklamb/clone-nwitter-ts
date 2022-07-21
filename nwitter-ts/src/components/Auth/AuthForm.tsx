@@ -1,11 +1,6 @@
 import { authService, firebaseInstance } from './fbase'
 import { useState } from 'react'
-import {
-  AuthFormContainer,
-  AuthFormInput,
-  AuthFormSubmit,
-  AuthSwitch,
-} from './Auth.style'
+import { AuthFormContainer, AuthFormInput, AuthFormSubmit, AuthSwitch } from './Auth.style'
 
 function AuthForm() {
   const [email, setEmail] = useState('')
@@ -13,7 +8,7 @@ function AuthForm() {
   const [newAccount, setNewAccount] = useState(true)
   const [error, setError] = useState('')
 
-  const onChange = (event: any) => {
+  const onChange: React.ChangeEventHandler<HTMLInputElement> = event => {
     const {
       target: { name, value },
     } = event
@@ -24,7 +19,7 @@ function AuthForm() {
     }
   }
 
-  const onSubmit = async (event: any) => {
+  const onSubmit: React.FormEventHandler<HTMLFormElement> = async event => {
     event.preventDefault()
     try {
       let data
@@ -59,16 +54,11 @@ function AuthForm() {
           value={password}
           onChange={onChange}
         ></AuthFormInput>
-        <AuthFormSubmit
-          type="submit"
-          value={newAccount ? 'Create Account' : 'Log In'}
-        />
+        <AuthFormSubmit type="submit" value={newAccount ? 'Create Account' : 'Log In'} />
         <br />
         {error && <span className="authError">{error}</span>}
       </AuthFormContainer>
-      <AuthSwitch onClick={toggleAccount}>
-        {newAccount ? 'Sign In' : 'Create Account'}
-      </AuthSwitch>
+      <AuthSwitch onClick={toggleAccount}>{newAccount ? 'Sign In' : 'Create Account'}</AuthSwitch>
     </div>
   )
 }

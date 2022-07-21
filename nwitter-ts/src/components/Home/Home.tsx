@@ -8,23 +8,23 @@ import { HomeContainer } from './Home.style'
 function Home({ userObj }: { userObj: any }) {
   const [nweets, setNweets] = useState([])
 
-  useEffect(() => {
-    dbService
-      .collection('nweets')
-      .orderBy('createdAt', 'desc')
-      .onSnapshot(snapshot => {
-        const newArray:{ id: string; }[]= snapshot.docs.map(document => ({
-          id: document.id,
-          ...document.data(),
-        }))
-        setNweets(newArray:{ id: string; }[])
-      })
-  }, [])
+  // useEffect(() => {
+  //   dbService
+  //     .collection('nweets')
+  //     .orderBy('createdAt', 'desc')
+  //     .onSnapshot(snapshot => {
+  //       const newArray:{ id: string; }[]= snapshot.docs.map(document => ({
+  //         id: document.id,
+  //         ...document.data(),
+  //       }))
+  //       setNweets(newArray:{ id: string; }[])
+  //     })
+  // }, [])
   return (
     <HomeContainer>
       {/* <NweetFactory userObj={userObj}/> */}
       <div style={{ margin: 30 }}>
-        {nweets.map(nweet => {
+        {/* {nweets.map(nweet => {
           return (
             // <Nweet
             //   key={nweet.id}
@@ -32,7 +32,7 @@ function Home({ userObj }: { userObj: any }) {
             //   isOwner={nweet.creatorId === userObj.uid}
             // />
           )
-        })}
+        })} */}
       </div>
     </HomeContainer>
   )
